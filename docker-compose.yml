@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: interview_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-myuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mypassword}
+      POSTGRES_DB: ${POSTGRES_DB:-interview_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-myuser} -d ${POSTGRES_DB:-interview_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    container_name: interview_api
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-myuser}:${POSTGRES_PASSWORD:-mypassword}@db:5432/${POSTGRES_DB:-interview_db}
+      - SECRET_KEY=${SECRET_KEY}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:8000}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

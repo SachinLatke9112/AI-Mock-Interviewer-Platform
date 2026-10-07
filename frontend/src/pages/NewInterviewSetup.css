@@ -1,0 +1,211 @@
+/* NewInterviewSetup.css */
+
+.setup-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.setup-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  position: relative;
+  z-index: 10;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
+
+.setup-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 10;
+}
+
+.setup-glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  padding: 3rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.setup-cover-image {
+  margin: -3rem -3rem 2rem -3rem;
+  height: 280px;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.setup-cover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.setup-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.setup-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.setup-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.icon-padding {
+  padding-left: 3rem;
+  width: 100%;
+}
+
+.custom-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+.custom-select option {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+}
+
+.upload-dropzone {
+  flex: 1;
+  border: 2px dashed rgba(129, 140, 248, 0.3);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(129, 140, 248, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--accent-primary);
+  background: rgba(129, 140, 248, 0.1);
+}
+
+.upload-icon {
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.upload-dropzone h4 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.upload-dropzone p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-btn {
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.setup-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.start-btn {
+  font-size: 1.25rem;
+  padding: 1rem 3rem;
+  box-shadow: 0 0 20px rgba(129, 140, 248, 0.4);
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Light Theme Overrides */
+html.light-theme .setup-glass-panel {
+  background: var(--glass-bg);
+}
+
+html.light-theme .upload-dropzone {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+html.light-theme .upload-dropzone:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--accent-primary);
+}
